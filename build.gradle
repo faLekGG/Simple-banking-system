@@ -1,0 +1,38 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+    id 'io.freefair.lombok' version '4.1.6'
+}
+
+group 'org.goloveyko'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    postgresVersion = "42.2.12"
+    lombokVersion = "1.18.12"
+    springBootVersion = "2.1.6.RELEASE"
+    springSecurityVersion = "5.3.1.RELEASE"
+    apacheVersion = "3.9"
+    modelMapperVersion = "2.3.5"
+}
+
+dependencies {
+    implementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
+    implementation "org.springframework.boot:spring-boot-starter-mail:${springBootVersion}"
+    compile "org.springframework.boot:spring-boot-starter-jdbc:${springBootVersion}"
+//    compile "org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}"
+    compile "org.modelmapper:modelmapper:${modelMapperVersion}"
+    compile "org.springframework.security:spring-security-web:${springSecurityVersion}"
+    compile "org.springframework.security:spring-security-config:${springSecurityVersion}"
+    compile "org.apache.commons:commons-lang3:${apacheVersion}"
+    compile "org.postgresql:postgresql:${postgresVersion}"
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
